@@ -8,12 +8,11 @@ import org.springframework.data.elasticsearch.config.AbstractElasticsearchConfig
 import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 
 @Configuration
-@EnableElasticsearchRepositories(basePackages = "kz.daracademy.repository")
 public class ElasticConfig extends AbstractElasticsearchConfiguration {
     @Override
     public RestHighLevelClient elasticsearchClient() {
         ClientConfiguration clientConfiguration = ClientConfiguration.builder()
-                .connectedTo("https://employee-task-4e9135.es.us-central1.gcp.cloud.es.io:9243")
+                .connectedTo("employee-task-4e9135.es.us-central1.gcp.cloud.es.io:9243")
                 //.connectedTo(("localhost:9200"))
                 .usingSsl()
                 .withBasicAuth("elastic", "xYEJP6PXo6KZvoLrZT1W6jye")

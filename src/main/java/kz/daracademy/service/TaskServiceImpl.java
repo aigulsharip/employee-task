@@ -12,7 +12,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class TaskServiceImpl implements TaskService{
@@ -68,4 +70,11 @@ public class TaskServiceImpl implements TaskService{
         return taskRepository.getTaskEntityByExecutorId(executorId, pageable).map(task -> modelMapper.map(task, TaskResponse.class));
 
     }
+
+    @Override
+    public List<TaskResponse> getAllTasks() {
+        return taskRepository.getTaskEntitiesBy().stream().map(post -> modelMapper.map(post, TaskResponse.class)).collect(Collectors.toList());
+
+    }
+
 }

@@ -9,9 +9,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import javax.ws.rs.PUT;
+import java.util.List;
 
 @RestController
-@RequestMapping("task")
+@RequestMapping("/task")
 public class TaskController {
 
     @Autowired
@@ -28,6 +29,12 @@ public class TaskController {
         taskRequest.setTaskId(taskId);
         return taskService.updateTask(taskRequest);
     }
+
+    @GetMapping("/all")
+    public List<TaskResponse> getAllTasks () {
+        return taskService.getAllTasks();
+    }
+
 
     @GetMapping
     public TaskResponse getTaskById (@RequestParam String taskId) {
